@@ -3,10 +3,9 @@ package com.app;
 
 import static com.codename1.ui.CN.*;
 
-import com.codename1.charts.compat.Paint.Style;
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.codename1.ui.Image;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
@@ -14,13 +13,15 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
+import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
+import com.diamonddevgroup.utils.Helper;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.animations.CommonTransitions;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.layouts.FlowLayout;
 
 
 public class AppVet {
@@ -60,9 +61,9 @@ public class AppVet {
 
         Button signIn = new Button("Entrar");
         signIn.addActionListener(evt -> {
-		    if (username.getText().length() == 0 || pass.getText().length() == 0) {
+		    /*if (username.getText().length() == 0 || pass.getText().length() == 0) {
 		        return;
-		    }
+		    }*/
 		    createUserForm();
 		});
         center.addComponent(signIn);
@@ -70,12 +71,11 @@ public class AppVet {
         login.show();
     }
     
-    private void createUserForm() {
+    private void createUserForm() {	
     	user = new Form("app-vet");
     	
     	Toolbar tb = user.getToolbar();
-        Image icon = theme.getImage("dog.png"); 
-        Container topBar = BorderLayout.east(new Label(icon));
+        Container topBar = BorderLayout.east(new Label(""));
         topBar.add(BorderLayout.SOUTH, new Label("Menu", "SidemenuTagline")); 
         topBar.setUIID("SideCommand");
         tb.addComponentToSideMenu(topBar);
@@ -99,41 +99,52 @@ public class AppVet {
 	}
     
     private Container createNewsContainer(){
-    	 Container n = BorderLayout.center(new Label());
-    	 n.setScrollableY(true);
+    	 Container n = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+    	 
+    	 //n.setScrollableY(true);
     	 
     	 Story s = new Story("NOVIDADE", "No dia 21 de agosto a veterinária estará fazendo tosa grátis de cães e gatos."
-    	 		+ " Aguardamos vocês", "Novo evento");
+    	 		+ " Aguardamos vocês.", "Novo evento");
     	 Component new1 = createNewsComponent(s);
-         n.addComponent(BorderLayout.CENTER, new1);            
+  	 
+         Story s1 = new Story("NOVIDADE", "Novo app já está disponível na google play! Venha conferir.", "Novo evento");
+     	 Component new2 = createNewsComponent(s1);
+     
+     	 n.add(new1);
+     	 n.add(new2); 
     	  
+        /* Label myLabel = new Label("MASSA");
+         new Helper(myLabel).pa1().ma0().textGreen().bgGrey();
+         n.add(myLabel);*/
+         
     	 return n;
     }
     
     private Component createNewsComponent(Story s) {
         Container mb = new Container(new BorderLayout());
-    	Container box = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        
 
+        mb.getAllStyles().setBorder(Border.createEmpty());
+        mb.getAllStyles().setBackgroundType((byte) 1);
+        mb.getAllStyles().setBgTransparency(255);
+        mb.getAllStyles().setBgColor(0xe1e1e1);
+        
+    	Button title = new Button();
+    	Label highlights = new Label(s.getText());
     	
-    	Button title = new Button(s.getText());
-    	title.setUIID("Title");
-    	Label highlights = new Label(s.getHighlights());
-    	highlights.setUIID("Body");
     	TextArea details = new TextArea(s.getFullDescription());
-    	details.setUIID("Body");
-    	box.addComponent(title);
-    	box.addComponent(highlights);
+    	mb.addComponent(BorderLayout.CENTER, title);
+    	mb.addComponent(BorderLayout.CENTER, highlights);
     	mb.setLeadComponent(title);
     	
-    	mb.add(BorderLayout.SOUTH, box);
     	    	
     	title.addActionListener((e) -> {
             if(highlights.getParent() != null) {
-                box.removeComponent(highlights);
-                box.addComponent(details);
+                mb.removeComponent(highlights);
+                mb.addComponent(BorderLayout.CENTER, details);
             } else {
-                box.removeComponent(details);
-                box.addComponent(highlights);
+                mb.removeComponent(details);
+                mb.addComponent(BorderLayout.CENTER, highlights);
             }
             mb.getParent().animateLayout(300);
     	});

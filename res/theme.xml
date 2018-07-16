@@ -43,6 +43,8 @@
     <image name="Dialog.borderTop_1.png" type="multi"  />
     <image name="Dialog.borderTopL_1.png" type="multi"  />
     <image name="Dialog.borderTopR_1.png" type="multi"  />
+    <image name="dog.png"  />
+    <image name="event.jpg"  />
     <image name="Menu.borderBottom_2.png" type="multi"  />
     <image name="Menu.borderBottomL_2.png" type="multi"  />
     <image name="Menu.borderBottomR_2.png" type="multi"  />
@@ -725,7 +727,7 @@
         <font key="TextHint.sel#font" type="ttf" face="0" style="2" size="0" name="native:ItalicThin" family="native:ItalicThin" sizeSettings="3" actualSize="3.0" />
         <val key="Title.align" value="4" />
         <val key="Title.fgColor" value="ffffff" />
-        <font key="Title.font" type="ttf" face="0" style="0" size="0" name="native:MainBold" family="native:MainBold" sizeSettings="3" actualSize="3.5" />
+        <font key="Title.font" type="ttf" face="0" style="0" size="16" name="native:MainBold" family="native:MainBold" sizeSettings="3" actualSize="5.0" />
         <val key="Title.padUnit" value="2,2,2,2" />
         <val key="Title.padding" value="1.0,1.0,1.0,1.0" />
         <val key="Title.sel#align" value="4" />
