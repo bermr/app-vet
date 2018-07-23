@@ -4,12 +4,15 @@ package com.app;
 import static com.codename1.ui.CN.*;
 
 import com.codename1.charts.util.ColorUtil;
+import com.codename1.io.ConnectionRequest;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
+import com.codename1.ui.Font;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
@@ -22,10 +25,10 @@ import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
 
 
 public class AppVet {
-
     private Form login;
     private Form user;
     //private Login login;
@@ -38,11 +41,9 @@ public class AppVet {
     }
     
     public void start() {
-    	
     	login = new Form("app-vet");
     	login.setLayout(new BorderLayout());
         Container center = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        center.setUIID("ContainerWithPadding");
         
       /*Image logo = theme.getImage("dog.png");
         Label l = new Label(logo);
@@ -73,14 +74,16 @@ public class AppVet {
     
     private void createUserForm() {	
     	user = new Form("app-vet");
+    	user.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
     	
     	Toolbar tb = user.getToolbar();
         Container topBar = BorderLayout.east(new Label(""));
         topBar.add(BorderLayout.SOUTH, new Label("Menu", "SidemenuTagline")); 
-        topBar.setUIID("SideCommand");
+        topBar.setUIID("SideMenu");
         tb.addComponentToSideMenu(topBar);
  
         //user.revalidate();
+        
         
         tb.addMaterialCommandToSideMenu("Novidades", FontImage.MATERIAL_HOME, e -> {showNews(user);}); 
         tb.addMaterialCommandToSideMenu("Meus Pets", FontImage.MATERIAL_WEB, e -> {showMyPets(user);});
@@ -121,18 +124,27 @@ public class AppVet {
     }
     
     private Component createNewsComponent(Story s) {
+    	int fontSize = Display.getInstance().convertToPixels(6);
+    	int fontSize2 = Display.getInstance().convertToPixels(3);
+    	Font f = Font.createTrueTypeFont("native","Roboto-Regular.ttf").derive(fontSize, Font.STYLE_PLAIN);
+    	Font f2 = Font.createTrueTypeFont("native","Roboto-Regular.ttf").derive(fontSize2, Font.STYLE_PLAIN);
+    	
         Container mb = new Container(new BorderLayout());
         
-
-        mb.getAllStyles().setBorder(Border.createEmpty());
+        mb.getAllStyles().setBorder(Border.createGrooveBorder(1));
         mb.getAllStyles().setBackgroundType((byte) 1);
         mb.getAllStyles().setBgTransparency(255);
         mb.getAllStyles().setBgColor(0xe1e1e1);
         
+        
     	Button title = new Button();
     	Label highlights = new Label(s.getText());
+    	highlights.getUnselectedStyle().setFont(f);
     	
     	TextArea details = new TextArea(s.getFullDescription());
+    	details.setUIID("DetailsTextArea");
+    	
+    	details.getUnselectedStyle().setFont(f2);
     	mb.addComponent(BorderLayout.CENTER, title);
     	mb.addComponent(BorderLayout.CENTER, highlights);
     	mb.setLeadComponent(title);
@@ -164,10 +176,15 @@ public class AppVet {
         myPets.addComponent(BorderLayout.CENTER, mp);
         
         //mp.setScrollableY(true);
+        Button b1 = new Button("Conectar");
+        b1.addActionListener((e) -> {
+            Display.getInstance().execute("http://192.168.1.114:10080");
+        });
         
         Label l1 = new Label("Cachorro 1");
         Label l2 = new Label("Cachorro 2");
      
+        mp.add(b1);
         mp.add(l1);
         mp.add(l2);
         
