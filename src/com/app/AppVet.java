@@ -3,12 +3,10 @@ package com.app;
 
 import static com.codename1.ui.CN.*;
 
-import com.codename1.charts.compat.Paint.Style;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Button;
-import com.codename1.ui.Command;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
@@ -17,12 +15,10 @@ import com.codename1.ui.Font;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
-import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.animations.CommonTransitions;
-import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 
@@ -30,8 +26,9 @@ import com.codename1.ui.layouts.BoxLayout;
 public class AppVet {
     private Form login;
     private Form user;
+    private Form signup;
     private int fontSize;
-    private int fontSize2;
+    //private int fontSize2;
     //private Login login;
     public Resources theme;
 
@@ -39,14 +36,19 @@ public class AppVet {
         updateNetworkThreadCount(2);
         theme = UIManager.initFirstTheme("/theme");
         Toolbar.setGlobalToolbar(true);
-        this.fontSize =  Display.getInstance().convertToPixels(6);
-        this.fontSize2 = Display.getInstance().convertToPixels(2);
+        this.fontSize =  Display.getInstance().convertToPixels(8);
     }
     
     public void start() {
     	login = new Form();
+    	Label title = new Label("Login");
     	login.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
+    	login.add(title);
         Container center = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        Font f = Font.createTrueTypeFont("native","Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
+        title.getUnselectedStyle().setFont(f);
+        title.getSelectedStyle().setFont(f);
+    	
         
       /*Image logo = theme.getImage("dog.png");
         Label l = new Label(logo);
@@ -57,18 +59,25 @@ public class AppVet {
         final TextField username = new TextField();
         username.setHint("Usuário");
         username.setAlignment(LEFT);
-        username.setUIID("Username");
+        username.setUIID("Login");
+    
         final TextField pass = new TextField();
         pass.setHint("Senha");
         pass.setAlignment(LEFT);
-        pass.setUIID("Username");
+        pass.setUIID("Login");
         pass.setConstraint(TextField.PASSWORD);
-
         center.addComponent(username);
         center.addComponent(pass);
 
         Button signIn = new Button("Entrar");
+        Button signUp = new Button("Cadastrar-se");
+        signUp.setUIID("SignUpButton");
         signIn.setUIID("SignInButton");
+        
+        signUp.addActionListener(evt -> {
+		    createSignUpForm();
+		});
+        
         signIn.addActionListener(evt -> {
 		    /*if (username.getText().length() == 0 || pass.getText().length() == 0) {
 		        return;
@@ -76,12 +85,59 @@ public class AppVet {
 		    createUserForm();
 		});
         center.addComponent(signIn);
-        Image img = theme.getImage("dog.png");
+        center.addComponent(signUp);
+        Image img = theme.getImage("logo.png");
         img = img.scaled(Math.round(Display.getInstance().getDisplayHeight()/ 3), Math.round(Display.getInstance().getDisplayWidth() / 2));
         Label logo = new Label(img);
         login.addComponent(logo);
         login.addComponent(center);
         login.show();
+    }
+    
+    private void createSignUpForm() {
+    	signup = new Form();
+    	signup.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
+    	Label title = new Label("Cadastro");
+        Font f = Font.createTrueTypeFont("native","Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
+        title.getUnselectedStyle().setFont(f);
+        title.getSelectedStyle().setFont(f);
+    	Label l = new Label("Preencha os campos a seguir para criar uma nova conta");
+    	l.setUIID("TitleSignUp");
+    	l.setAutoSizeMode(true);
+    	final TextField name = new TextField();
+        name.setHint("Nome Completo");
+        name.setUIID("Login");
+        final TextField password = new TextField();
+        password.setHint("Senha");
+        password.setUIID("Login");
+        password.setConstraint(TextField.PASSWORD);
+        final TextField password2 = new TextField();
+        password2.setHint("Confirmar Senha");
+        password2.setUIID("Login");
+        password2.setConstraint(TextField.PASSWORD);
+        final TextField cpf = new TextField();
+        cpf.setHint("CPF");
+        cpf.setUIID("Login");
+    	Button back = new Button("Voltar");
+    	back.setUIID("SignUpButton");
+    	Button create = new Button("Criar");
+    	create.setUIID("SignInButton");
+    	create.addActionListener(evt -> {
+		    //login.showBack();
+		});
+    	back.addActionListener(evt -> {
+		    login.showBack();
+		});
+    	signup.add(title);
+    	signup.add(l);
+    	signup.add(name);
+    	signup.add(password);
+    	signup.add(password2);
+    	signup.add(cpf);
+    	signup.add(create);
+        signup.add(back);
+        signup.revalidate();
+    	signup.show();
     }
     
     private void createUserForm() {	
@@ -90,7 +146,7 @@ public class AppVet {
     	
     	Toolbar tb = user.getToolbar();
     	tb.setScrollOffUponContentPane(true);
-    	Image img = theme.getImage("dog.png");
+    	Image img = theme.getImage("logo.png");
     	img = img.scaled(Math.round(Display.getInstance().getDisplayHeight() / 6), Math.round(Display.getInstance().getDisplayWidth() / 4));
         Label logo = new Label(img);
         tb.addComponentToSideMenu(logo);
@@ -104,7 +160,7 @@ public class AppVet {
         tb.addMaterialCommandToSideMenu("Meus Pets", FontImage.MATERIAL_PETS, e -> {showMyPets(user);});
         tb.addMaterialCommandToSideMenu("Autorizações", FontImage.MATERIAL_INBOX, e -> {showAuth(user);});
         tb.addMaterialCommandToSideMenu("Sobre", FontImage.MATERIAL_INFO, e -> {showAbout(user);});
-		
+		tb.addMaterialCommandToSideMenu("Sair", FontImage.MATERIAL_EXIT_TO_APP, e -> {login.showBack();});
        
         user.addComponent(new Label(""));
         user.show();
@@ -119,7 +175,12 @@ public class AppVet {
     
     private Container createNewsContainer(){
     	 Container n = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    	 
+    	 Label title = new Label("Novidades");
+     	 n.add(title);
+         Font f = Font.createTrueTypeFont("native","Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
+         title.getUnselectedStyle().setFont(f);
+         title.getSelectedStyle().setFont(f);
+         
     	 //n.setScrollableY(true);
     	 
     	 Story s = new Story("NOVIDADE", "No dia 21 de agosto a veterinária estará fazendo tosa grátis de cães e gatos."
@@ -128,9 +189,17 @@ public class AppVet {
   	 
          Story s1 = new Story("NOVIDADE", "Novo app já está disponível na google play! Venha conferir.", "Novo evento");
      	 Component new2 = createNewsComponent(s1);
-     
+     	 Component new3 = createNewsComponent(s1);
+    	 Component new4 = createNewsComponent(s1);
+     	 Component new5 = createNewsComponent(s1);
+    	 Component new6 = createNewsComponent(s1);
+     	 
      	 n.add(new1);
      	 n.add(new2); 
+     	 n.add(new3);
+     	 n.add(new4);
+     	 n.add(new5);
+     	 n.add(new6);
     	  
         /* Label myLabel = new Label("MASSA");
          new Helper(myLabel).pa1().ma0().textGreen().bgGrey();
@@ -140,9 +209,9 @@ public class AppVet {
     }
     
     private Component createNewsComponent(Story s) {
-    	Font f = Font.createTrueTypeFont("native","Roboto-Regular.ttf").derive(fontSize, Font.STYLE_PLAIN);
+    	/*Font f = Font.createTrueTypeFont("native","Roboto-Regular.ttf").derive(fontSize, Font.STYLE_PLAIN);
     	Font f2 = Font.createTrueTypeFont("native","Roboto-Regular.ttf").derive(fontSize2, Font.STYLE_PLAIN);
-    	
+    	*/
         Container mb = new Container(new BorderLayout());
         
         /*mb.getAllStyles().setBorder(Border.createGrooveBorder(1));
@@ -153,11 +222,11 @@ public class AppVet {
         
     	Button title = new Button();
     	Label highlights = new Label(s.getText());
-    	highlights.getUnselectedStyle().setFont(f);
+    	//highlights.getUnselectedStyle().setFont(f);
     	
     	TextArea details = new TextArea(s.getFullDescription());
     	
-    	details.getUnselectedStyle().setFont(f2);
+    	//details.getUnselectedStyle().setFont(f2);
     	mb.addComponent(BorderLayout.CENTER, title);
     	mb.addComponent(BorderLayout.CENTER, highlights);
     	mb.setLeadComponent(title);
@@ -183,21 +252,27 @@ public class AppVet {
 	}
     
     private Container createMyPets() {
-        Container myPets = BorderLayout.center(new Label());
+        Container myPets = new Container(new BoxLayout((BoxLayout.Y_AXIS)));
+        Label title = new Label("Meus Pets");
+    	myPets.add(title);
+        Font f = Font.createTrueTypeFont("native","Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
+        title.getUnselectedStyle().setFont(f);
+        title.getSelectedStyle().setFont(f);
         
         Container mp = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        myPets.addComponent(BorderLayout.CENTER, mp);
+        myPets.addComponent(mp);
         
         //mp.setScrollableY(true);
-        Button b1 = new Button("Conectar");
+        /*Button b1 = new Button("Conectar");
         b1.addActionListener((e) -> {
-            Display.getInstance().execute("http://192.168.1.114:10080");
+            Display.getInstance().execute("http://www.google.com");
         });
+        */
         
         Label l1 = new Label("Cachorro 1");
         Label l2 = new Label("Cachorro 2");
      
-        mp.add(b1);
+        //mp.add(b1);
         mp.add(l1);
         mp.add(l2);
         
@@ -209,10 +284,15 @@ public class AppVet {
 	}
 
 	private Component createAbout() {
-		Container about = BorderLayout.center(new Label());
+		Container about = new Container(new BoxLayout((BoxLayout.Y_AXIS)));
+		Label title = new Label("Sobre");
+    	about.add(title);
+        Font f = Font.createTrueTypeFont("native","Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
+        title.getUnselectedStyle().setFont(f);
+        title.getSelectedStyle().setFont(f);
         
         Container ab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        about.addComponent(BorderLayout.CENTER, ab);
+        about.addComponent(ab);
         
         ab.setScrollableY(true);
         
@@ -230,10 +310,14 @@ public class AppVet {
 	}
 
 	private Component createAuth() {
-		Container auth = BorderLayout.center(new Label());
-        
+		Container auth = new Container(new BoxLayout((BoxLayout.Y_AXIS)));
+		Label title = new Label("Autorizações");
+    	auth.add(title);
+        Font f = Font.createTrueTypeFont("native","Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
+        title.getUnselectedStyle().setFont(f);
+        title.getSelectedStyle().setFont(f);
         Container au = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        auth.addComponent(BorderLayout.CENTER, au);
+        auth.addComponent(au);
         
         au.setScrollableY(true);
         

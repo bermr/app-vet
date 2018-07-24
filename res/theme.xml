@@ -45,6 +45,7 @@
     <image name="Dialog.borderTopR_1.png" type="multi"  />
     <image name="dog.png"  />
     <image name="event.jpg"  />
+    <image name="logo.png"  />
     <image name="Menu.borderBottom_2.png" type="multi"  />
     <image name="Menu.borderBottomL_2.png" type="multi"  />
     <image name="Menu.borderBottomR_2.png" type="multi"  />
@@ -87,6 +88,18 @@
         <font key="Button.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.5" />
         <val key="Button.sel#textDecoration" value="0" />
         <val key="Button.textDecoration" value="0" />
+        <font key="Label.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
+        <font key="Label.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
+        <font key="Label.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
+        <val key="Login.align" value="1" />
+        <val key="Login.derive" value="TextField" />
+        <val key="Login.margin" value="10.0,0.0,0.0,0.0" />
+        <val key="Login.press#align" value="1" />
+        <val key="Login.press#derive" value="TextField" />
+        <val key="Login.press#margin" value="10.0,0.0,0.0,0.0" />
+        <val key="Login.sel#align" value="1" />
+        <val key="Login.sel#derive" value="TextField" />
+        <val key="Login.sel#margin" value="10.0,0.0,0.0,0.0" />
         <val key="SideCommand.align" value="1" />
         <val key="SideCommand.bgColor" value="fefefe" />
         <border key="SideCommand.border" type="empty" />
@@ -102,28 +115,35 @@
         <val key="SideCommand.transparency" value="255" />
         <val key="SideNavigationPanel.bgColor" value="ffffff" />
         <val key="SideNavigationPanel.transparency" value="255" />
-        <val key="SignInButton.bgColor" value="adf7fd" />
+        <val key="SignInButton.bgColor" value="80f5fe" />
+        <border key="SignInButton.border" type="round" roundBorderColor="215169" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="SignInButton.derive" value="Button" />
-        <val key="SignInButton.press#bgColor" value="adf7fd" />
+        <val key="SignInButton.margin" value="20.0,0.0,0.0,0.0" />
+        <val key="SignInButton.press#bgColor" value="80f5fe" />
+        <border key="SignInButton.press#border" type="round" roundBorderColor="159432" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="SignInButton.press#derive" value="Button" />
-        <val key="SignInButton.sel#bgColor" value="adf7fd" />
+        <val key="SignInButton.press#margin" value="20.0,0.0,0.0,0.0" />
+        <val key="SignInButton.sel#bgColor" value="80f5fe" />
+        <border key="SignInButton.sel#border" type="round" roundBorderColor="215169" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="SignInButton.sel#derive" value="Button" />
-        <font key="TextField.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="1" actualSize="12.0" />
-        <font key="TextField.press#font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="1" actualSize="12.0" />
-        <font key="TextField.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="1" actualSize="12.0" />
-        <val key="Username.align" value="1" />
-        <val key="Username.derive" value="TextField" />
-        <font key="Username.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
-        <val key="Username.padding" value="5.0,5.0,0.0,0.0" />
-        <val key="Username.press#align" value="1" />
-        <val key="Username.press#derive" value="TextField" />
-        <font key="Username.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
-        <val key="Username.press#textDecoration" value="0" />
-        <val key="Username.sel#align" value="1" />
-        <val key="Username.sel#derive" value="TextField" />
-        <font key="Username.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
-        <val key="Username.sel#textDecoration" value="0" />
-        <val key="Username.textDecoration" value="0" />
+        <val key="SignInButton.sel#margin" value="20.0,0.0,0.0,0.0" />
+        <border key="SignUpButton.border" type="round" roundBorderColor="14775810" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="SignUpButton.derive" value="SignInButton" />
+        <border key="SignUpButton.press#border" type="round" roundBorderColor="16745728" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="SignUpButton.press#derive" value="SignInButton" />
+        <border key="SignUpButton.sel#border" type="round" roundBorderColor="14775810" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="SignUpButton.sel#derive" value="SignInButton" />
+        <font key="TextField.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="2" actualSize="12.0" />
+        <val key="TextField.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="TextField.padding" value="0.0,0.0,0.0,0.0" />
+        <font key="TextField.press#font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="2" actualSize="12.0" />
+        <font key="TextField.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="2" actualSize="12.0" />
+        <val key="TitleSignUp.fgColor" value="10101" />
+        <font key="TitleSignUp.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="8.0" />
+        <val key="TitleSignUp.press#fgColor" value="10101" />
+        <font key="TitleSignUp.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="8.0" />
+        <val key="TitleSignUp.sel#fgColor" value="10101" />
+        <font key="TitleSignUp.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="8.0" />
         <val key="align" value="4" />
         <val key="bgColor" value="fefefe" />
         <val key="fgColor" value="000000" />
