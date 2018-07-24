@@ -74,7 +74,56 @@
     <image name="switch_off.png" type="multi"  />
     <image name="switch_on.png" type="multi"  />
     <theme name="Theme 1">
-        <val key="@includeNativeBool" value="true" />
+        <val key="@listLongPressBool" value="false" />
+        <val key="Button.bgColor" value="fefefe" />
+        <border key="Button.border" type="line" millimeters="false" thickness="1.0" color="0" />
+        <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.5" />
+        <val key="Button.press#bgColor" value="fefefe" />
+        <border key="Button.press#border" type="line" millimeters="false" thickness="1.0" color="0" />
+        <font key="Button.press#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.5" />
+        <val key="Button.press#textDecoration" value="0" />
+        <val key="Button.sel#bgColor" value="fefefe" />
+        <border key="Button.sel#border" type="line" millimeters="false" thickness="1.0" color="0" />
+        <font key="Button.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.5" />
+        <val key="Button.sel#textDecoration" value="0" />
+        <val key="Button.textDecoration" value="0" />
+        <val key="SideCommand.align" value="1" />
+        <val key="SideCommand.bgColor" value="fefefe" />
+        <border key="SideCommand.border" type="empty" />
+        <val key="SideCommand.fgColor" value="10101" />
+        <font key="SideCommand.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="4.0" />
+        <val key="SideCommand.margin" value="0.0,1.0,0.0,0.0" />
+        <val key="SideCommand.padUnit" value="2,2,2,2" />
+        <val key="SideCommand.padding" value="3.0,3.0,3.0,3.0" />
+        <val key="SideCommand.press#bgColor" value="dedede" />
+        <val key="SideCommand.press#derive" value="SideCommand" />
+        <val key="SideCommand.sel#bgColor" value="dedede" />
+        <val key="SideCommand.sel#derive" value="SideCommand" />
+        <val key="SideCommand.transparency" value="255" />
+        <val key="SideNavigationPanel.bgColor" value="ffffff" />
+        <val key="SideNavigationPanel.transparency" value="255" />
+        <val key="SignInButton.bgColor" value="adf7fd" />
+        <val key="SignInButton.derive" value="Button" />
+        <val key="SignInButton.press#bgColor" value="adf7fd" />
+        <val key="SignInButton.press#derive" value="Button" />
+        <val key="SignInButton.sel#bgColor" value="adf7fd" />
+        <val key="SignInButton.sel#derive" value="Button" />
+        <font key="TextField.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="1" actualSize="12.0" />
+        <font key="TextField.press#font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="1" actualSize="12.0" />
+        <font key="TextField.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="1" actualSize="12.0" />
+        <val key="Username.align" value="1" />
+        <val key="Username.derive" value="TextField" />
+        <font key="Username.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
+        <val key="Username.padding" value="5.0,5.0,0.0,0.0" />
+        <val key="Username.press#align" value="1" />
+        <val key="Username.press#derive" value="TextField" />
+        <font key="Username.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
+        <val key="Username.press#textDecoration" value="0" />
+        <val key="Username.sel#align" value="1" />
+        <val key="Username.sel#derive" value="TextField" />
+        <font key="Username.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="2" actualSize="12.0" />
+        <val key="Username.sel#textDecoration" value="0" />
+        <val key="Username.textDecoration" value="0" />
         <val key="align" value="4" />
         <val key="bgColor" value="fefefe" />
         <val key="fgColor" value="000000" />
