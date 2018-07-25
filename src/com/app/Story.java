@@ -1,11 +1,11 @@
 package com.app;
 
 public class Story {
-	private String text;
+	private String title;
 	private String fullDescription;
 	
 	public Story(String t, String f, String h) {
-		this.text = t;
+		this.title = t;
 		this.fullDescription = f;
 	}
 	
@@ -18,10 +18,10 @@ public class Story {
 	}
 
 	public String getText() {
-		return text;
+		return title;
 	}
 
 	public void setText(String text) {
-		this.text = text;
+		this.title = text;
 	}
 }
