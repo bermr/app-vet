@@ -4,7 +4,7 @@ public class Story {
 	private String title;
 	private String fullDescription;
 	
-	public Story(String t, String f, String h) {
+	public Story(String t, String f) {
 		this.title = t;
 		this.fullDescription = f;
 	}

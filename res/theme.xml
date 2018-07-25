@@ -14,6 +14,7 @@
     <image name="Button.dis#borderTopR_1.png" type="multi"  />
     <image name="cal_left_arrow.png" type="multi"  />
     <image name="cal_right_arrow.png" type="multi"  />
+    <image name="catdog.png"  />
     <image name="chbox1.png" type="multi"  />
     <image name="chboxv1.png" type="multi"  />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
@@ -75,6 +76,15 @@
     <theme name="Theme 1">
         <val key="@listLongPressBool" value="false" />
         <val key="@minimizeOnBackBool" value="false" />
+        <border key="About.border" type="empty" />
+        <val key="About.derive" value="TextArea" />
+        <font key="About.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
+        <border key="About.press#border" type="empty" />
+        <val key="About.press#derive" value="TextArea" />
+        <font key="About.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
+        <border key="About.sel#border" type="empty" />
+        <val key="About.sel#derive" value="TextArea" />
+        <font key="About.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
         <val key="Button.bgColor" value="fefefe" />
         <border key="Button.border" type="line" millimeters="false" thickness="1.0" color="0" />
         <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.5" />
@@ -87,6 +97,12 @@
         <font key="Button.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.5" />
         <val key="Button.sel#textDecoration" value="0" />
         <val key="Button.textDecoration" value="0" />
+        <border key="CC.border" type="empty" />
+        <val key="CC.derive" value="TextArea" />
+        <border key="CC.press#border" type="empty" />
+        <val key="CC.press#derive" value="TextArea" />
+        <border key="CC.sel#border" type="empty" />
+        <val key="CC.sel#derive" value="TextArea" />
         <val key="Details.derive" value="TextArea" />
         <val key="Details.fgColor" value="4671fe" />
         <border key="Highlights.border" type="line" millimeters="false" thickness="1.0" color="0" />

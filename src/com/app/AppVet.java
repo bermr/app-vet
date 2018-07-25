@@ -19,7 +19,6 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.animations.CommonTransitions;
-import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 
@@ -28,8 +27,6 @@ public class AppVet {
 	private Form user;
 	private Form signup;
 	private int fontSize;
-	// private int fontSize2;
-	// private Login login;
 	public Resources theme;
 
 	public void init(Object context) {
@@ -48,12 +45,6 @@ public class AppVet {
 		Font f = Font.createTrueTypeFont("native", "Pacifico.ttf").derive(fontSize, Font.STYLE_PLAIN);
 		title.getUnselectedStyle().setFont(f);
 		title.getSelectedStyle().setFont(f);
-
-		/*
-		 * Image logo = theme.getImage("dog.png"); Label l = new Label(logo); Container
-		 * flow = new Container(new FlowLayout(Component.CENTER)); flow.addComponent(l);
-		 * center.addComponent(flow);
-		 */
 
 		final TextField username = new TextField();
 		username.setHint("Usuário");
@@ -125,7 +116,17 @@ public class AppVet {
 		Button create = new Button("Criar");
 		create.setUIID("SignInButton");
 		create.addActionListener(evt -> {
-			// login.showBack();
+			Dialog.show("", "Conta criada com sucesso", "OK", null);
+			/*Dialog dlg = new Dialog("");
+			dlg.setLayout(BoxLayout.y());
+			TextArea ta = new TextArea("Conta criada com sucesso!");
+			ta.setUIID("CC");
+		    ta.setEditable(false);
+		    Button ok = new Button(new Command("OK"));
+		    dlg.add(ta);
+		    dlg.add(ok);
+		    dlg.showDialog();
+		    dlg.setUIID("Dlog");*/
 		});
 		back.addActionListener(evt -> {
 			login.showBack();
@@ -203,11 +204,10 @@ public class AppVet {
 		// n.setScrollableY(true);
 
 		Story s = new Story("TOSA GRATIS",
-				"No dia 21 de agosto a veterinária estará fazendo tosa grátis de cães e gatos." + " Aguardamos vocês.",
-				"Novo evento");
+				"No dia 21 de agosto a veterinária estará fazendo tosa grátis de cães e gatos." + " Aguardamos vocês.");
 		Component new1 = createNewsComponent(s);
 
-		Story s1 = new Story("NOVIDADE", "Novo app já está disponível na google play! Venha conferir.", "Novo evento");
+		Story s1 = new Story("NOVIDADE", "Novo app já está disponível na google play! Venha conferir.");
 		Component new2 = createNewsComponent(s1);
 
 		n.add(new1);
@@ -262,7 +262,8 @@ public class AppVet {
 
 		// mp.setScrollableY(true);
 		/*
-		 * Button b1 = new Button("Conectar"); b1.addActionListener((e) -> {
+		 * Button b1 = new Button("Conectar");
+		 * b1.addActionListener((e) -> {
 		 * Display.getInstance().execute("http://www.google.com"); });
 		 */
 
@@ -292,14 +293,22 @@ public class AppVet {
 		Container ab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
 		about.addComponent(ab);
 
-		ab.setScrollableY(true);
-
-		Label l1 = new Label("Veterinaria X");
-		Label l2 = new Label("3551-3551, Rua Tal, Lavras");
-
+		TextArea l1 = new TextArea("VET & PET – Rua Santo Antônio n°26, Centro, LAVRAS-MG. CEP:37200-000  CNPJ: 29.698.036/0001-72");
+		l1.setEditable(false);
+		l1.setUIID("About");
+		Button btn = new Button("");
+		btn.addActionListener(e -> {
+			Display.getInstance().execute("http://www.google.com"); 
+		});
+		ab.add(btn);
 		ab.add(l1);
-		ab.add(l2);
-
+		ab.setLeadComponent(btn);
+		Image img = theme.getImage("catdog.png");
+		img = img.scaledLargerRatio(Math.round(Display.getInstance().getDisplayHeight() / 5),
+				Math.round(Display.getInstance().getDisplayWidth() / 4));
+		Label catdog = new Label(img);
+		about.add(catdog);
+		
 		return about;
 	}
 
